@@ -37,7 +37,7 @@ int fila_cheia(Fila f)
         return 0;
 }
 
-int insere_fim(Fila f, int *elem)
+int insere_fim(Fila f, int elem)
 {
     if (fila_cheia(f) == 1)
         return 0;
@@ -54,4 +54,15 @@ int remove_ini(Fila f, int *elem)
     f->ini = (f->ini + 1) % max;
     f->cont--;
     return 1;
+}
+
+void imprime_fila(Fila f)
+{
+    Fila aux = f;
+    printf("Fila:{");
+    for (int i = 0; i < aux->cont; i++)
+    {
+        printf("%d", aux->no[i]);
+    }
+    printf("}\n");
 }

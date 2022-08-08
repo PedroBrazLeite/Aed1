@@ -49,3 +49,48 @@ int le_topo(Pilha *p, int *elem)
     *elem = aux->info;
     return 1;
 }
+
+int palindromo(char *vet)
+{
+    int len, mid, elem;
+    int i;
+    Pilha p = cria_pilha();
+    len = strlen(vet);
+    mid = len / 2;
+    for (int i = 0; i < mid; i++)
+    {
+        push(&p, vet[i]);
+    }
+    i = ((len % 2) != 0) ? i + 1 : i;
+    while (vet[i] != '\0')
+    {
+        pop(&p, &elem);
+        if (elem != vet[i])
+        {
+            return 0;
+        }
+        i++;
+    }
+    return 1;
+}
+
+void imprimir(Pilha p)
+{
+
+    Pilha percorre;
+
+    percorre = p;
+
+    if (p == NULL)
+        printf("A Pilha se encontra vazia!\n"); // Pilha Vazia
+    else
+    {
+        while (percorre != NULL)
+        {
+
+            printf("Elemento: %d \n", percorre->info);
+
+            percorre = percorre->prox;
+        }
+    }
+}
